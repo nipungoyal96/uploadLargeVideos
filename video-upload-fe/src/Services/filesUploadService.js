@@ -4,9 +4,14 @@ class FilesService {
     files = [];
     sessionId = '';
     fileNames = [];
-
-    constructor(files) {
+    phoneNo = '';
+    email = ''; 
+    loginId = '';
+    constructor(files, phoneNo, email, loginId) {
         this.files = files;
+        this.phoneNo = phoneNo;
+        this.email = email;
+        this.loginId = loginId;
     }
 
     async createFilesUploadSession() {
@@ -43,7 +48,9 @@ class FilesService {
 
         formData.append('filesName', JSON.stringify(fileNames))
         formData.append('filesSize', JSON.stringify(fileSizes))
-       
+        formData.append('phoneNo', this.phoneNo);
+        formData.append('email', this.email);
+        formData.append('loginId', this.loginId)
         return formData
     }
 }

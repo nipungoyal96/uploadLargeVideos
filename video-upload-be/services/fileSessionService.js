@@ -1,23 +1,10 @@
 const { v4 : uuidv4 } = require('uuid');
 const path = require('path')
-//import fileSessionRepo from '../repository/FileSessionRepo'
-
-let instance = null;
 
 class FileSessionService {
     
 
-    // async findFileSessionDetails(fileSessionId, fileName){
-    //     const fileDetails = await fileSessionRepo.findFileSession(fileSessionId, fileName)
-
-    //     if (Array.isArray(fileDetails)) {
-    //         return fileDetails[0]
-    //     }
-
-    //     return false
-    // }
-
-    createUploadData(filesName, filesSize) {
+    createUploadData(filesName, filesSize,mobileNo, email, loginId) {
         const filesExtension = [];
         const uniqueFilesName = filesName.map(fileName => {
             const fileExtension = this.getFileExtension(fileName)
@@ -29,7 +16,8 @@ class FileSessionService {
             originalFilesName: filesName,
             uniqueFilesName,
             filesSize,
-            filesExtension
+            filesExtension,
+            mobileNo, email, loginId
         }
     }
 

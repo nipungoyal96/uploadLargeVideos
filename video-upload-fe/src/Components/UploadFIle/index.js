@@ -1,13 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { createSession } from '../../store/actions/uploadFIles';
 
-const UploadFile = ({isMultiple}) => {
-    const dispatch = useDispatch();
-    const uploadFiles = (e) => {
-        dispatch(createSession(Object.values(e.target.files)))
-    }
-
-    return <input type="file" onChange = {uploadFiles} multiple = {isMultiple} />
+const UploadFile = ({isMultiple, setFormField}) => {
+    return <input type="file" onChange={(e) => setFormField(Object.values(e.target.files), 'files')} multiple = {isMultiple} />
 }
 
 export default UploadFile;

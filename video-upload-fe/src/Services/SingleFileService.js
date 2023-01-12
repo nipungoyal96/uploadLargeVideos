@@ -60,7 +60,7 @@ class SingleFileService {
 
     getFileBlock() {
         this.startBlock = this.endBlock
-        this.endBlock = this.endBlock + this.maxFileBlockSize
+        this.endBlock = this.endBlock + UploadCompConfig.chunkSize
 
         const blob = this.file.slice(this.startBlock, this.endBlock)
 

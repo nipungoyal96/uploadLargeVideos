@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const uploadVideoRoute = require("./routes/uploadVideo-route");
+const downloadVideoRoute = require("./routes/downloaVideoRoute.js");
+
 
 require('dotenv').config();
 const app = express();
@@ -20,7 +22,8 @@ app.use(function (req, res, next) {
 
 
   app.use('/uploadVideos', uploadVideoRoute);
-
+  app.use('/downloadVideos', downloadVideoRoute);
+  
   app.use((req, res, next) => {
    const error = new HttpError('Could not find this route.', 404);
    throw error;

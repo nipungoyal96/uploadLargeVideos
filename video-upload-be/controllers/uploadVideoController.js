@@ -6,7 +6,10 @@ const fileSessionService = require("../services/fileSessionService").default;
 const genrateVideosUploadSession = async (req, res, next) => {
     let {
         filesName,
-        filesSize
+        filesSize,
+        phoneNo,
+        email,
+        loginId
     } = req.body
 
     filesName = JSON.parse(filesName);
@@ -22,7 +25,7 @@ const genrateVideosUploadSession = async (req, res, next) => {
 
     const fileService = new fileSessionService();
 
-    const videosData = fileService.createUploadData(filesName, filesSize)
+    const videosData = fileService.createUploadData(filesName, filesSize, phoneNo, email, loginId)
     const videos = Videos(videosData);
 
     try {
@@ -41,6 +44,30 @@ const genrateVideosUploadSession = async (req, res, next) => {
     });
   };
   
+  const setUploadComplete = async (request, response, next) => {
+    try{
+        let { sessionId } = request.body
+        Videos.findByIdAndUpdate(sessionId, {isSuccess: true}).then(data => {
+            if (!data) {
+                response.status(404).send({
+                message: "Error in updating status"
+              });
+            } else response.send({ message: "Update Sucessfully" });
+          })
+          .catch(err => {
+            response.status(500).send({
+              message: "Error in updating status"
+            });
+          });
+
+    } catch(err) {
+        console.log(err);
+        res.status(500).send({
+            message: "Error in updating status"
+          });
+    }
+  }
+
   const uploadFile = async (request, response, next) => {
      try {
         const file = request.file
@@ -84,5 +111,28 @@ const genrateVideosUploadSession = async (req, res, next) => {
 
      }
   }
+
+  const getAllVideos = async (request, response, next) => {
+        try {
+            Videos.find({ isSuccess: true })
+    .then(data => {
+        response.send(data);
+    })
+    .catch(err => {
+        response.status(500).send({
+        message:
+          "Some error occurred while retrieving videos."
+      });
+    });
+        } catch(err) {
+            response.status(500).send({
+                message:
+                   "Some error occurred while retrieving videos."
+              });
+        }
+    }
+
   exports.genrateVideosUploadSession = genrateVideosUploadSession;
   exports.uploadFile = uploadFile;
+  exports.setUploadComplete = setUploadComplete;
+  exports.getAllVideos = getAllVideos;

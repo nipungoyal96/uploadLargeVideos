@@ -49,12 +49,12 @@ class FilesUploadValidator
         };
 
         if(this.files.length < UploadCompConfig.minNoOfFiles) {
-            filesValidation.message = `No of files cannot be less than ${UploadCompConfig.minNoOfFiles} Mb`;
+            filesValidation.message = `No of files cannot be less than ${UploadCompConfig.minNoOfFiles}`;
             return filesValidation;
         }
 
         if(this.files.length > UploadCompConfig.maxNoOfFiles) {
-            filesValidation.message = `No of files cannot be grater than ${UploadCompConfig.maxNoOfFiles} Mb`;
+            filesValidation.message = `No of files cannot be grater than ${UploadCompConfig.maxNoOfFiles}`;
             return filesValidation;
         }
 

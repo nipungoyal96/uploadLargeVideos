@@ -1,0 +1,81 @@
+
+.uploadForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #4070f4;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 25vw;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+
+  .heading {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .field {
+    margin-bottom: 20px;
+  }
+
+  .inputField {
+    position: relative;
+    width: 100%;
+    height: 55px;
+  }
+
+  .tabsInput {
+    display: none;
+  }
+  
+  .tabsLabel {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #bbb;
+    border: 1px solid transparent;
+  }
+  
+  .tabsLabel:before {
+    font-family: fontawesome;
+    font-weight: normal;
+    margin-right: 10px;
+  }
+
+  .tabsLabel:hover {
+    color: #888;
+    cursor: pointer;
+  }
+  
+  .tabsInput:checked + label {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 2px solid orange;
+    border-bottom: 1px solid #fff;
+  }
+
+  .tabsInput:not(checked) + label {
+    border-bottom: 2px solid #ddd;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .container  {
+      max-width: 95vw;
+    }
+  }

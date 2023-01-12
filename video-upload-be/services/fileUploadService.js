@@ -36,7 +36,7 @@ class FileUploadService
                     flags: 'a'
                 } 
             )
-    
+                
             fileStream.write(this.fileData.file.buffer, 'base64')
     
             fileStream.on('error', (err) => {

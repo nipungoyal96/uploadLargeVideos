@@ -1,0 +1,29 @@
+
+
+.loaderContainer{
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+.loader{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.loader::after{
+	content: '';
+	width: 10vh;
+	height: 10vh;
+	animation: loading 1s infinite linear;
+	border: 20px solid #404040;
+	border-top-color: green;
+	border-radius: 50%;
+}
+@keyframes loading{
+	to{
+		transform: rotate(2turn);
+	}
+}
